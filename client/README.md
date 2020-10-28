@@ -1,4 +1,4 @@
-# Fast Track React app template with TypeScript & Redux 
+
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 ## Installation
@@ -47,23 +47,6 @@ Follow the file/folder structure as explained below to make necessary changes. F
   * `src/redux/sagas`: For Redux sagas
   * `src/redux/store.ts`: The Redux store
 
-  If there are multiple un-related features, split action/reducer/saga into different files. For example:
-  ```
-  src/redux/actions/product.ts
-  src/redux/actions/order.ts
-  src/redux/actions/ui.ts
-  ```
-  ```
-  src/redux/reducers/product.ts
-  src/redux/reducers/order.ts
-  src/redux/actions/ui.ts
-  ```
-  ```
-  src/redux/sagas/product.ts
-  src/redux/sagas/order.ts
-  src/redux/sagas/ui.ts
-  ```
-
 * `src/pages`: Pages (or views) when using [React router](https://reacttraining.com/react-router/web/guides/quick-start). For example:
   ```
   src/pages/Home.tsx
@@ -79,25 +62,3 @@ Follow the file/folder structure as explained below to make necessary changes. F
 
 * `src/Routes.tsx`: Defines all the React router routes to different pages.
 
-This template is suitable for rather small apps. For bigger apps, a better & more organized way is to split the folder structure into features, something like:
-  ```
-  sr/feature1
-  --components
-  --redux
-  ----action.ts
-  ----reducer.ts
-  ----saga.ts
-
-  src/feature2
-  --components
-  --redux
-  ----action.ts
-  ----reducer.ts
-  ----saga.ts
-
-  src/redux
-  --action.ts
-  --reducer.ts
-  --saga.ts
-  --store.ts
-  ```
