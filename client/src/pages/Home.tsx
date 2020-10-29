@@ -1,10 +1,10 @@
 import React from 'react'
 import { useDispatch, useSelector } from 'react-redux'
-import { Link } from 'react-router-dom'
 
 import { Product, AppState } from '../types'
 import { addProduct, removeProduct } from '../redux/actions'
 import Products from '../components/Products'
+import Wrapper from '../components/Wrapper'
 import '../index.css'
 
 import data from '../data/data'
@@ -25,18 +25,7 @@ export default function Home() {
 
   return (
     <>
-      <div className="grid-container">
-        <header className="row">
-          <div>
-            <a className="brand" href="index.html">
-              IPAY
-            </a>
-          </div>
-          <div>
-            <Link to="/cart">Cart</Link>
-            <Link to="signIn">Sign In</Link>
-          </div>
-        </header>
+      <Wrapper>
         <main>
           <div>
             <div className="row center">
@@ -58,8 +47,7 @@ export default function Home() {
             </div>
           </div>
         </main>
-        <footer className="row center">All right reserved</footer>
-      </div>
+      </Wrapper>
     </>
   )
 }

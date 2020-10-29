@@ -11,7 +11,8 @@ export default {
       brand: 'Nike',
       rating: 4.2,
       numReviews: 10,
-      description: 'new Clothes'
+      description: 'new Clothes',
+      countInStock: 25,
     },
     {
       _id: '2',
@@ -24,7 +25,8 @@ export default {
       brand: 'Addidas',
       rating: 4.5,
       numReviews: 15,
-      description: 'new Clothes'
+      description: 'new Clothes',
+      countInStock: 0,
     },
     {
       _id: '3',
@@ -37,7 +39,8 @@ export default {
       brand: 'Addidas',
       rating: 4.5,
       numReviews: 15,
-      description: 'new Clothes'
+      description: 'new Clothes',
+      countInStock: 30,
     },
     {
       _id: '4',
@@ -50,7 +53,8 @@ export default {
       brand: 'Nike',
       rating: 4.2,
       numReviews: 10,
-      description: 'new Clothes'
+      description: 'new Clothes',
+      countInStock: 0,
     },
     {
       _id: '5',
@@ -63,7 +67,8 @@ export default {
       brand: 'Nike',
       rating: 4.2,
       numReviews: 10,
-      description: 'new Clothes'
+      description: 'new Clothes',
+      countInStock: 10,
     },
     {
       _id: '6',
@@ -76,7 +81,8 @@ export default {
       brand: 'Nike',
       rating: 4.2,
       numReviews: 10,
-      description: 'new Clothes'
+      description: 'new Clothes',
+      countInStock: 10,
     },
   ],
 }
