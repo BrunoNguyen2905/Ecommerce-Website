@@ -1,43 +1,21 @@
 import React from 'react'
-import data from '../../data/data'
 import { Link } from 'react-router-dom'
 import ProductImage from '../../images/p1.jpg'
-export type ProductProps = { data: any[] }
-const Product = () => {
+import { IProduct } from '../../types'
+import Rating from '../Rating'
+const Product = ({_id,name,brand,categories,description,image,numReviews,price,rating,sizes}: IProduct) => {
   return (
-    <div>
-     <div className="row center">
-              {data.products.map((prod) => (
-                <div key={prod._id} className="card">
-                  <Link to={`/products/${prod._id}`}>
-                    <img className="medium" src={ProductImage} alt="product" />
-                  </Link>
-                  <div className="card-body">
-                    <Link to={`/products/${prod._id}`}>
-                      <h2>{prod.name}</h2>
-                    </Link>
-                    <div className="rating">
-                      <span>
-                        <i className="fa fa-star"></i>
-                      </span>
-                      <span>
-                        <i className="fa fa-star"></i>
-                      </span>
-                      <span>
-                        <i className="fa fa-star"></i>
-                      </span>
-                      <span>
-                        <i className="fa fa-star"></i>
-                      </span>
-                      <span>
-                        <i className="fa fa-star"></i>
-                      </span>
-                    </div>
-                    <div className="price">${prod.price}</div>
-                  </div>
-                </div>
-              ))}
-            </div>
+    <div className="card">
+      <Link to={`/products/${_id}`}>
+        <img className="medium" src={ProductImage} alt="product" />
+      </Link>
+      <div className="card-body">
+        <Link to={`/products/${_id}`}>
+          <h2>{name}</h2>
+        </Link>
+        <Rating numReviews={numReviews} rating={rating}/>
+        <div className="price">${price}</div>
+      </div>
     </div>
   )
 }

@@ -9,7 +9,24 @@ export enum DialogType {
 }
 
 
+// Product Inteface
+export type IProduct = {
+  _id: string;
+  name: string;
+  description: string;
+  categories: string[];
+  sizes: string[];
+  brand: string;
+  image: string;
+  price: number;
+  rating: number;
+  numReviews: number;
+}
 
+export type ratingProps = {
+  rating:number;
+  numReviews: number;
+}
 // A product
 export type Product = {
   id: string

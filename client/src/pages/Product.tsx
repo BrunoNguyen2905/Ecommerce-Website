@@ -18,7 +18,6 @@ export default function Product() {
 
   const product = data.products.find((product) => product._id === id)
   if (!product) {
-    console.log('111111', id)
     return <div>Product not found</div>
   }
   return (

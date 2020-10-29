@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom'
 
 import { Product, AppState } from '../types'
 import { addProduct, removeProduct } from '../redux/actions'
-import Products from '../components/Product'
+import Products from '../components/Products'
 import '../index.css'
 
 import data from '../data/data'
@@ -33,13 +33,29 @@ export default function Home() {
             </a>
           </div>
           <div>
-            <Link to='/cart'>Cart</Link>
-            <Link to='signIn'>Sign In</Link>
+            <Link to="/cart">Cart</Link>
+            <Link to="signIn">Sign In</Link>
           </div>
         </header>
         <main>
           <div>
-            <Products/>
+            <div className="row center">
+              {data.products.map((prod) => (
+                <Products
+                  key={prod._id}
+                  _id={prod._id}
+                  name={prod.name}
+                  brand={prod.brand}
+                  categories={prod.categories}
+                  sizes={prod.sizes}
+                  description={prod.description}
+                  image={prod.image}
+                  numReviews={prod.numReviews}
+                  price={prod.price}
+                  rating={prod.rating}
+                />
+              ))}
+            </div>
           </div>
         </main>
         <footer className="row center">All right reserved</footer>
