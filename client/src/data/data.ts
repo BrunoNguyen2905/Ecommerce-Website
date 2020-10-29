@@ -1,0 +1,82 @@
+export default {
+  products: [
+    {
+      _id: '1',
+      name: 'Slim Shirt',
+      categories: 'Shirts',
+      sizes: 'S, M, L, XL',
+      image: '../images/d1.jpg',
+      // image: {ShirtImages},
+      price: 60,
+      brand: 'Nike',
+      rating: 4.2,
+      numReviews: 10,
+      description: 'new Clothes'
+    },
+    {
+      _id: '2',
+      name: 'Slim Fit Pants',
+      categories: 'Pants',
+      sizes: 'S, M, L, XL',
+      image: '../images/d2.jpg',
+      // image: {ShirtImages},
+      price: 70,
+      brand: 'Addidas',
+      rating: 4.5,
+      numReviews: 15,
+      description: 'new Clothes'
+    },
+    {
+      _id: '3',
+      name: 'Nike Shirt',
+      categories: 'Pants',
+      sizes: 'S, M, L, XL',
+      image: '../images/d2.jpg',
+      // image: {ShirtImages},
+      price: 80,
+      brand: 'Addidas',
+      rating: 4.5,
+      numReviews: 15,
+      description: 'new Clothes'
+    },
+    {
+      _id: '4',
+      name: 'Lascote Tshirt',
+      categories: 'Shirts',
+      sizes: 'S, M, L, XL',
+      image: '../images/d1.jpg',
+      // image: {ShirtImages},
+      price: 90,
+      brand: 'Nike',
+      rating: 4.2,
+      numReviews: 10,
+      description: 'new Clothes'
+    },
+    {
+      _id: '5',
+      name: 'Puma Sneakers',
+      categories: 'Shirts',
+      sizes: 'S, M, L, XL',
+      image: "../images/p1.jpg",
+      // image: {ShirtImages},
+      price: 100,
+      brand: 'Nike',
+      rating: 4.2,
+      numReviews: 10,
+      description: 'new Clothes'
+    },
+    {
+      _id: '6',
+      name: 'Hoodies',
+      categories: 'Shirts',
+      sizes: 'S, M, L, XL',
+      image: '../images/d1.jpg',
+      // image: {ShirtImages},
+      price: 110,
+      brand: 'Nike',
+      rating: 4.2,
+      numReviews: 10,
+      description: 'new Clothes'
+    },
+  ],
+}

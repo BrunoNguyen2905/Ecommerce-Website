@@ -2,12 +2,13 @@
 export const ADD_PRODUCT = 'ADD_PRODUCT'
 export const REMOVE_PRODUCT = 'REMOVE_PRODUCT'
 export const TOGGLE_DIALOG = 'TOGGLE_DIALOG'
-
 // Enum
 export enum DialogType {
   SignIn = 'signIn',
   SignUp = 'signUp',
 }
+
+
 
 // A product
 export type Product = {
