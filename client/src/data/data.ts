@@ -2,7 +2,7 @@ export default {
   products: [
     {
       _id: '1',
-      name: 'Slim Shirt',
+      name: 'Slimmmmmmmmmmm Shirt',
       categories: ['Pants', 'BestSeller'],
       sizes: ['S, M, L, XL'],
       image: '../public/images/d1.jpg',

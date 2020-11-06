@@ -9,9 +9,9 @@ import rootSaga from './sagas'
 const initState: AppState = {
   product: {
     inCart: [],
-  },
-  ui: {
-    dialogOpen: {},
+    allProducts: [],
+    error: null,
+    loading: true,
   },
 }
 

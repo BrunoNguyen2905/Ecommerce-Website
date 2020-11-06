@@ -1,13 +1,9 @@
 // Action types
 export const ADD_PRODUCT = 'ADD_PRODUCT'
 export const REMOVE_PRODUCT = 'REMOVE_PRODUCT'
-export const TOGGLE_DIALOG = 'TOGGLE_DIALOG'
-// Enum
-export enum DialogType {
-  SignIn = 'signIn',
-  SignUp = 'signUp',
-}
-
+export const FETCH_PRODUCTS = 'FETCH_PRODUCTS'
+export const FETCH_PRODUCTS_SUCCESS = 'FETCH_PRODUCTS_SUCCESS'
+export const FETCH_PRODUCTS_FAIL = 'FETCH_PRODUCTS_FAIL'
 // Product Inteface
 export type IProduct = {
   _id: string
@@ -55,31 +51,37 @@ export type RemoveProductAction = {
     product: Product
   }
 }
-
-export type ToggleDialogAction = {
-  type: typeof TOGGLE_DIALOG
+export type FetchProductAction = {
+  type: typeof FETCH_PRODUCTS
+}
+export type FetchProductSuccess = {
+  type: typeof FETCH_PRODUCTS_SUCCESS
   payload: {
-    dialog: DialogType
+    data: IProduct[]
   }
 }
-
-export type UiActions = ToggleDialogAction
+export type FetchProductFail = {
+  type: typeof FETCH_PRODUCTS_FAIL
+  payload: {
+    errMessage: string
+  }
+}
 
 // Use this union in reducer
-export type ProductActions = AddProductAction | RemoveProductAction
+export type ProductActions =
+  | AddProductAction
+  | RemoveProductAction
+  | FetchProductAction
+  | FetchProductSuccess
+  | FetchProductFail
 
 export type ProductState = {
-  inCart: Product[]
-}
-
-// Using dynamic keys from an enum
-export type UiState = {
-  dialogOpen: {
-    [key in DialogType]?: boolean
-  }
+  inCart: IProduct[]
+  allProducts: IProduct[]
+  error: string | null
+  loading: boolean
 }
 
 export type AppState = {
   product: ProductState
-  ui: UiState
 }

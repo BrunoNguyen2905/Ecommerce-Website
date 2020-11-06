@@ -1,30 +1,24 @@
-import React, { useEffect, useState } from 'react'
-import axios from 'axios'
-import { IProduct } from '../../types'
+import React, { useEffect } from 'react'
+import { useDispatch, useSelector } from 'react-redux'
+import { AppState, IProduct } from '../../types'
 import Products from '../../components/Products'
 import Wrapper from '../../components/Wrapper'
 import Spinner from '../../components/Spinner'
 import MessageBox from '../../components/MessageBox'
 import '../../index.css'
+import { fetchAllProducts } from '../../redux/actions'
 export default function Home() {
-  const [products, setProducts] = useState<IProduct[]>([])
-  const [loading, setLoading] = useState(false)
-  const [error, setError] = useState(false)
+  const dispatch = useDispatch()
+  // const allProducts = useSelector(
+  //   (state: AppState) => state.product.allProducts
+  // )
+  // const loading = useSelector((state: AppState) => state.product.loading)
+  // const errorMess = useSelector((state: AppState) => state.product.error)
+  const products = useSelector((state: AppState) => state.product)
+  const { loading, error, allProducts } = products
   useEffect(() => {
-    const fetchData = async () => {
-      try {
-        setLoading(true)
-        const { data } = await axios.get('/api/v1/products')
-        setLoading(false)
-        setProducts(data)
-        console.log(data)
-      } catch (err) {
-        setError(err.message)
-        setLoading(false)
-      }
-    }
-    fetchData()
-  }, [])
+    dispatch(fetchAllProducts())
+  }, [dispatch])
 
   return (
     <>
@@ -33,11 +27,11 @@ export default function Home() {
           <div>
             {loading ? (
               <Spinner />
-            ) : error ? (
+            ) : error !== null ? (
               <MessageBox variant="danger">{error}</MessageBox>
             ) : (
               <div className="row center">
-                {products.map((prod: IProduct) => (
+                {allProducts.map((prod: IProduct) => (
                   <Products
                     key={prod._id}
                     _id={prod._id}
