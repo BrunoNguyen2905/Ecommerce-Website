@@ -8,24 +8,32 @@ export enum DialogType {
   SignUp = 'signUp',
 }
 
-
 // Product Inteface
 export type IProduct = {
-  _id: string;
-  name: string;
-  description: string;
-  categories: string[];
-  sizes: string[];
-  brand: string;
-  image: string;
-  price: number;
-  rating: number;
-  numReviews: number;
+  _id: string
+  name: string
+  description: string
+  categories: string[]
+  sizes: string[]
+  brand: string
+  image: string
+  price: number
+  rating: number
+  numReviews: number
 }
 
 export type ratingProps = {
-  rating:number;
-  numReviews: number;
+  rating: number
+  numReviews: number
+}
+
+export type WrapperProps = {
+  children: React.ReactNode
+}
+
+export type MessageProps = {
+  children: React.ReactNode
+  variant: string
 }
 // A product
 export type Product = {
@@ -37,30 +45,28 @@ export type Product = {
 export type AddProductAction = {
   type: typeof ADD_PRODUCT
   payload: {
-    product: Product,
+    product: Product
   }
 }
 
 export type RemoveProductAction = {
   type: typeof REMOVE_PRODUCT
   payload: {
-    product: Product,
+    product: Product
   }
 }
 
 export type ToggleDialogAction = {
   type: typeof TOGGLE_DIALOG
   payload: {
-    dialog: DialogType,
+    dialog: DialogType
   }
 }
 
 export type UiActions = ToggleDialogAction
 
 // Use this union in reducer
-export type ProductActions =
-  | AddProductAction
-  | RemoveProductAction
+export type ProductActions = AddProductAction | RemoveProductAction
 
 export type ProductState = {
   inCart: Product[]
@@ -74,6 +80,6 @@ export type UiState = {
 }
 
 export type AppState = {
-  product: ProductState,
-  ui: UiState,
+  product: ProductState
+  ui: UiState
 }

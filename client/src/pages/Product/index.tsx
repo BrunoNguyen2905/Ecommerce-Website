@@ -1,22 +1,12 @@
 import React from 'react'
 import { Link, useParams } from 'react-router-dom'
-import { useSelector } from 'react-redux'
-
-import { AppState } from '../types'
-import data from '../data/data'
-import image from '../images/d1.jpg'
-import Wrapper from '../components/Wrapper'
-import '../index.css'
-import Rating from '../components/Rating'
+import data from '../../data/data'
+import image from '../../images/d1.jpg'
+import Wrapper from '../../components/Wrapper'
+import '../../index.css'
+import Rating from '../../components/Rating'
 export default function Product() {
   const { id } = useParams()
-
-  // const product = useSelector((state: AppState) =>
-  //   state.product.inCart.find(p => p.id === id))
-
-  // if (!product) {
-  //   return <div>Product not found</div>
-  // }
 
   const product = data.products.find((product) => product._id === id)
   if (!product) {
@@ -26,7 +16,7 @@ export default function Product() {
     <>
       <Wrapper>
         <div>
-        <Link to="/">Back to result</Link>
+          <Link to="/">Back to result</Link>
           <div className="row top">
             <div className="col-2">
               <img className="large" src={image} alt={product.name} />
@@ -65,7 +55,7 @@ export default function Product() {
                         {product.countInStock > 0 ? (
                           <span className="success">In Stock</span>
                         ) : (
-                          <span className="error">Unavailable</span>
+                          <span className="danger">Unavailable</span>
                         )}
                       </div>
                     </div>
