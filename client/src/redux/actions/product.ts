@@ -10,6 +10,9 @@ import {
   ProductActions,
   Product,
   IProduct,
+  PRODUCT_DETAILS,
+  PRODUCT_DETAILS_SUCCESS,
+  PRODUCT_DETAILS_FAIL,
 } from '../../types'
 const productsURL = '/api/v1/products'
 export function addProduct(product: Product): ProductActions {
@@ -51,6 +54,28 @@ export function fetchProductsFail(errMessage: string): ProductActions {
   }
 }
 
+export function productDetailsAction(): ProductActions {
+  return {
+    type: PRODUCT_DETAILS,
+  }
+}
+
+export function productDetailsSuccess(data: IProduct): ProductActions {
+  return {
+    type: PRODUCT_DETAILS_SUCCESS,
+    payload: {
+      data,
+    },
+  }
+}
+export function productDetailsFail(errMessage: string): ProductActions {
+  return {
+    type: PRODUCT_DETAILS_FAIL,
+    payload: {
+      errMessage,
+    },
+  }
+}
 // Async action processed by redux-thunk middleware
 export function fetchAllProducts() {
   return async (dispatch: Dispatch) => {
@@ -60,6 +85,24 @@ export function fetchAllProducts() {
       dispatch(fetchProductsSuccess(res.data))
     } catch (error) {
       dispatch(fetchProductsFail(error.message))
+    }
+  }
+}
+
+export function fetchOneProduct(productId: string) {
+  return async (dispatch: Dispatch) => {
+    dispatch(productDetailsAction())
+    try {
+      const res = await axios.get(`${productsURL}/${productId}`)
+      dispatch(productDetailsSuccess(res.data))
+    } catch (error) {
+      dispatch(
+        productDetailsFail(
+          error.response && error.response.data.message
+            ? error.response.data.message
+            : error.message
+        )
+      )
     }
   }
 }

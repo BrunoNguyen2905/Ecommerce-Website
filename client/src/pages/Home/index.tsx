@@ -9,11 +9,6 @@ import '../../index.css'
 import { fetchAllProducts } from '../../redux/actions'
 export default function Home() {
   const dispatch = useDispatch()
-  // const allProducts = useSelector(
-  //   (state: AppState) => state.product.allProducts
-  // )
-  // const loading = useSelector((state: AppState) => state.product.loading)
-  // const errorMess = useSelector((state: AppState) => state.product.error)
   const products = useSelector((state: AppState) => state.product)
   const { loading, error, allProducts } = products
   useEffect(() => {
@@ -44,6 +39,7 @@ export default function Home() {
                     numReviews={prod.numReviews}
                     price={prod.price}
                     rating={prod.rating}
+                    countInStock={prod.countInStock}
                   />
                 ))}
               </div>

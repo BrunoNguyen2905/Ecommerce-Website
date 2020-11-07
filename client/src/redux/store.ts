@@ -12,6 +12,19 @@ const initState: AppState = {
     allProducts: [],
     error: null,
     loading: true,
+    oneProduct: {
+      _id: '',
+      name: '',
+      brand: '',
+      description: '',
+      categories: [],
+      countInStock: 0,
+      image: '',
+      numReviews: 0,
+      price: 0,
+      rating: 0,
+      sizes: [],
+    },
   },
 }
 

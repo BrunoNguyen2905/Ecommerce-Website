@@ -4,6 +4,9 @@ import {
   FETCH_PRODUCTS,
   FETCH_PRODUCTS_SUCCESS,
   FETCH_PRODUCTS_FAIL,
+  PRODUCT_DETAILS,
+  PRODUCT_DETAILS_SUCCESS,
+  PRODUCT_DETAILS_FAIL,
 } from '../../types'
 
 export default function product(
@@ -12,6 +15,19 @@ export default function product(
     allProducts: [],
     error: null,
     loading: true,
+    oneProduct: {
+      _id: '',
+      name: '',
+      brand: '',
+      description: '',
+      categories: [],
+      countInStock: 0,
+      image: '',
+      numReviews: 0,
+      price: 0,
+      rating: 0,
+      sizes: [],
+    },
   },
   action: ProductActions
 ): ProductState {
@@ -44,6 +60,36 @@ export default function product(
   }
 
   case FETCH_PRODUCTS_FAIL: {
+    const { errMessage } = action.payload
+    return { ...state, loading: false, error: errMessage }
+  }
+
+  case PRODUCT_DETAILS: {
+    return {
+      ...state,
+      loading: true,
+      oneProduct: {
+        _id: '',
+        brand: '',
+        categories: [],
+        countInStock: 0,
+        description: '',
+        image: '',
+        name: '',
+        numReviews: 0,
+        price: 0,
+        rating: 0,
+        sizes: [],
+      },
+    }
+  }
+
+  case PRODUCT_DETAILS_SUCCESS: {
+    const { data } = action.payload
+    return { ...state, loading: false, error: null, oneProduct: data! }
+  }
+
+  case PRODUCT_DETAILS_FAIL: {
     const { errMessage } = action.payload
     return { ...state, loading: false, error: errMessage }
   }

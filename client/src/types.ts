@@ -4,6 +4,9 @@ export const REMOVE_PRODUCT = 'REMOVE_PRODUCT'
 export const FETCH_PRODUCTS = 'FETCH_PRODUCTS'
 export const FETCH_PRODUCTS_SUCCESS = 'FETCH_PRODUCTS_SUCCESS'
 export const FETCH_PRODUCTS_FAIL = 'FETCH_PRODUCTS_FAIL'
+export const PRODUCT_DETAILS = 'PRODUCT_DETAILS'
+export const PRODUCT_DETAILS_SUCCESS = 'PRODUCT_DETAILS_SUCCESS'
+export const PRODUCT_DETAILS_FAIL = 'PRODUCT_DETAILS_FAIL'
 // Product Inteface
 export type IProduct = {
   _id: string
@@ -16,6 +19,7 @@ export type IProduct = {
   price: number
   rating: number
   numReviews: number
+  countInStock: number
 }
 
 export type ratingProps = {
@@ -66,6 +70,23 @@ export type FetchProductFail = {
     errMessage: string
   }
 }
+export type ProductDetailsAction = {
+  type: typeof PRODUCT_DETAILS
+}
+
+export type ProductDetailsSuccess = {
+  type: typeof PRODUCT_DETAILS_SUCCESS
+  payload: {
+    data: IProduct
+  }
+}
+
+export type ProductDetailsFail = {
+  type: typeof PRODUCT_DETAILS_FAIL
+  payload: {
+    errMessage: string
+  }
+}
 
 // Use this union in reducer
 export type ProductActions =
@@ -74,12 +95,16 @@ export type ProductActions =
   | FetchProductAction
   | FetchProductSuccess
   | FetchProductFail
+  | ProductDetailsAction
+  | ProductDetailsSuccess
+  | ProductDetailsFail
 
 export type ProductState = {
   inCart: IProduct[]
   allProducts: IProduct[]
   error: string | null
   loading: boolean
+  oneProduct: IProduct
 }
 
 export type AppState = {
