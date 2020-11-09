@@ -55,8 +55,9 @@ const Cart = () => {
                     </div>
                     <div>
                       <select
-                        onBlur={(e: React.ChangeEvent<HTMLSelectElement>) =>
-                          console.log(e.target.value)
+                        onBlur={
+                          (e: React.ChangeEvent<HTMLSelectElement>) =>
+                            console.log(e.target.value) //fix this issue eslint-plugin-jsx-a11y
                         }
                         value={String(item.qty)}
                         onChange={(e: React.ChangeEvent<HTMLSelectElement>) =>

@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from 'react'
 import { Link, useHistory, useParams } from 'react-router-dom'
-import image from '../../images/d1.jpg'
 import '../../index.css'
 import Rating from '../../components/Rating'
 import { useDispatch, useSelector } from 'react-redux'
@@ -37,7 +36,11 @@ export default function Product() {
             <Link to="/">Back to result</Link>
             <div className="row top">
               <div className="col-2">
-                <img className="large" src={image} alt={oneProduct.name} />
+                <img
+                  className="large"
+                  src={oneProduct.image}
+                  alt={oneProduct.name}
+                />
               </div>
               <div className="col-1">
                 <ul>
@@ -87,7 +90,7 @@ export default function Product() {
                               <select
                                 onBlur={(
                                   e: React.ChangeEvent<HTMLSelectElement>
-                                ) => console.log(e.target.value)}
+                                ) => console.log(e.target.value)} //fix this issue eslint-plugin-jsx-a11y
                                 value={qty}
                                 onChange={(
                                   e: React.ChangeEvent<HTMLSelectElement>
