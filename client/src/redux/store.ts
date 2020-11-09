@@ -38,7 +38,8 @@ export default function makeStore(initialState = initState) {
       composeEnhancers = (window as any).__REDUX_DEVTOOLS_EXTENSION_COMPOSE__
     }
   }
-
+  const savedStore = localStorage.getItem('product-state') || ''
+  if (savedStore) initialState = JSON.parse(savedStore)
   const store = createStore(
     createRootReducer(),
     initialState,

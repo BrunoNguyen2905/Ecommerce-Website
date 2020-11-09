@@ -7,6 +7,8 @@ import {
   PRODUCT_DETAILS,
   PRODUCT_DETAILS_SUCCESS,
   PRODUCT_DETAILS_FAIL,
+  ADD_PRODUCT,
+  REMOVE_PRODUCT,
 } from '../../types'
 
 export default function product(
@@ -32,24 +34,36 @@ export default function product(
   action: ProductActions
 ): ProductState {
   switch (action.type) {
-  // case ADD_PRODUCT: {
-  //   const { product } = action.payload
-  //   if (state.inCart.find(p => p.id === product.id)) {
-  //     return state
-  //   }
-  //   // Always return new state (e.g, new object) if changed
-  //   return { ...state, inCart: [...state.inCart, product] }
-  // }
+  case ADD_PRODUCT: {
+    // const {product, qty} = action.payload
+    const item = action.payload
+    console.log(state.inCart.length)
+    const exsitProd = state.inCart.find(
+      (p) => p.product._id === item.product._id
+    )
+    if (exsitProd) {
+      console.log(state.inCart)
+      return {
+        ...state,
+        inCart: state.inCart.map((x) =>
+          x.product._id === exsitProd.product._id ? item : x
+        ),
+      }
+    } else {
+      return {
+        ...state,
+        inCart: [...state.inCart, item],
+      }
+    }
+  }
 
-  // case REMOVE_PRODUCT: {
-  //   const { product } = action.payload
-  //   const index = state.inCart.findIndex(p => p.id === product.id)
-  //   if (index >= 0) {
-  //     state.inCart.splice(index, 1)
-  //     return { ...state, inCart: [...state.inCart] }
-  //   }
-  //   return state
-  // }
+  case REMOVE_PRODUCT: {
+    const { productId } = action.payload
+    return {
+      ...state,
+      inCart: state.inCart.filter((x) => x.product._id !== productId),
+    }
+  }
   case FETCH_PRODUCTS: {
     return { ...state, loading: true }
   }

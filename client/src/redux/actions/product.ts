@@ -8,27 +8,27 @@ import {
   FETCH_PRODUCTS_SUCCESS,
   FETCH_PRODUCTS_FAIL,
   ProductActions,
-  Product,
   IProduct,
   PRODUCT_DETAILS,
   PRODUCT_DETAILS_SUCCESS,
   PRODUCT_DETAILS_FAIL,
 } from '../../types'
 const productsURL = '/api/v1/products'
-export function addProduct(product: Product): ProductActions {
+export function addProduct(product: IProduct, qty: Number): ProductActions {
   return {
     type: ADD_PRODUCT,
     payload: {
       product,
+      qty,
     },
   }
 }
 
-export function removeProduct(product: Product): ProductActions {
+export function removeProduct(productId: string): ProductActions {
   return {
     type: REMOVE_PRODUCT,
     payload: {
-      product,
+      productId,
     },
   }
 }
@@ -107,6 +107,18 @@ export function fetchOneProduct(productId: string) {
   }
 }
 
+export function addToCart(productId: string, qty: number) {
+  return async (dispatch: Dispatch) => {
+    const res = await axios.get(`${productsURL}/${productId}`)
+    dispatch(addProduct(res.data, qty))
+  }
+}
+
+// export function removeFromCart(productId: string){
+//   return async(dispatch: Dispatch) => {
+//     const
+//   }
+// }
 // export function fetchProduct(productId: string) {
 //   return (dispatch: Dispatch) => {
 //     return fetch(`products/${productId}`)

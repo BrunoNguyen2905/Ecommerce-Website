@@ -22,6 +22,11 @@ export type IProduct = {
   countInStock: number
 }
 
+export type inCartProps = {
+  product: IProduct
+  qty: Number
+}
+
 export type ratingProps = {
   rating: number
   numReviews: number
@@ -45,14 +50,15 @@ export type Product = {
 export type AddProductAction = {
   type: typeof ADD_PRODUCT
   payload: {
-    product: Product
+    product: IProduct
+    qty: Number
   }
 }
 
 export type RemoveProductAction = {
   type: typeof REMOVE_PRODUCT
   payload: {
-    product: Product
+    productId: string
   }
 }
 export type FetchProductAction = {
@@ -100,7 +106,9 @@ export type ProductActions =
   | ProductDetailsFail
 
 export type ProductState = {
-  inCart: IProduct[]
+  // inCart: {product: IProduct & {qty: number}}[]
+  // inCart: IProduct[]
+  inCart: inCartProps[]
   allProducts: IProduct[]
   error: string | null
   loading: boolean
