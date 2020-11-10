@@ -26,6 +26,18 @@ const initState: AppState = {
       sizes: [],
     },
   },
+  user: {
+    loggedInUser: {
+      _id: '',
+      email: '',
+      firstName: '',
+      isAdmin: undefined,
+      lastName: '',
+      token: '',
+    },
+    message: '',
+    loading: true,
+  },
 }
 
 export default function makeStore(initialState = initState) {

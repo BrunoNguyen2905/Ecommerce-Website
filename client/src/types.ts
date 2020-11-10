@@ -1,4 +1,5 @@
 // Action types
+//products
 export const ADD_PRODUCT = 'ADD_PRODUCT'
 export const REMOVE_PRODUCT = 'REMOVE_PRODUCT'
 export const FETCH_PRODUCTS = 'FETCH_PRODUCTS'
@@ -7,6 +8,16 @@ export const FETCH_PRODUCTS_FAIL = 'FETCH_PRODUCTS_FAIL'
 export const PRODUCT_DETAILS = 'PRODUCT_DETAILS'
 export const PRODUCT_DETAILS_SUCCESS = 'PRODUCT_DETAILS_SUCCESS'
 export const PRODUCT_DETAILS_FAIL = 'PRODUCT_DETAILS_FAIL'
+//users
+export const USER_REGISTER_REQUEST = 'USER_REGISTER_REQUEST'
+export const USER_REGISTER_SUCCESS = 'USER_REGISTER_SUCCESS'
+export const USER_REGISTER_FAIL = 'USER_REGISTER_FAIL'
+export const USER_SIGNIN_REQUEST = 'USER_SIGNIN_REQUEST'
+export const USER_SIGNIN_SUCCESS = 'USER_SIGNIN_SUCCESS'
+export const USER_SIGNIN_FAIL = 'USER_SIGNIN_FAIL'
+export const USER_SIGNOUT = 'USER_SIGNOUT'
+
+export const CLEAR_MESSAGE = 'CLEAR_MESSAGE'
 // Product Inteface
 export type IProduct = {
   _id: string
@@ -20,6 +31,15 @@ export type IProduct = {
   rating: number
   numReviews: number
   countInStock: number
+}
+//User Interface
+export type IUser = {
+  _id: string
+  firstName: string
+  lastName: string
+  email: string
+  isAdmin: boolean | undefined
+  token: string
 }
 
 export type inCartProps = {
@@ -47,6 +67,7 @@ export type Product = {
   price: number
 }
 
+//products
 export type AddProductAction = {
   type: typeof ADD_PRODUCT
   payload: {
@@ -94,6 +115,63 @@ export type ProductDetailsFail = {
   }
 }
 
+//users
+
+export type registerRequest = {
+  type: typeof USER_REGISTER_REQUEST
+  payload: {
+    firstName: string
+    lastName: string
+    email: string
+    password: string
+  }
+}
+
+export type registerSuccess = {
+  type: typeof USER_REGISTER_SUCCESS
+  payload: {
+    data: IUser
+    successMes: string
+  }
+}
+
+export type registerFail = {
+  type: typeof USER_REGISTER_FAIL
+  payload: {
+    errMessage: string
+  }
+}
+
+export type signInRequest = {
+  type: typeof USER_SIGNIN_REQUEST
+  payload: {
+    email: string
+    password: string
+  }
+}
+
+export type signInFail = {
+  type: typeof USER_SIGNIN_FAIL
+  payload: {
+    errMessage: string
+  }
+}
+
+export type signInSuccess = {
+  type: typeof USER_SIGNIN_SUCCESS
+  payload: {
+    data: IUser
+    successMes: string
+  }
+}
+
+export type signOut = {
+  type: typeof USER_SIGNOUT
+}
+
+export type clearMessage = {
+  type: typeof CLEAR_MESSAGE
+}
 // Use this union in reducer
 export type ProductActions =
   | AddProductAction
@@ -105,6 +183,16 @@ export type ProductActions =
   | ProductDetailsSuccess
   | ProductDetailsFail
 
+export type UserActions =
+  | signInRequest
+  | signInFail
+  | signInSuccess
+  | registerRequest
+  | registerSuccess
+  | registerFail
+  | clearMessage
+  | signOut
+
 export type ProductState = {
   // inCart: {product: IProduct & {qty: number}}[]
   // inCart: IProduct[]
@@ -115,6 +203,13 @@ export type ProductState = {
   oneProduct: IProduct
 }
 
+export type UserState = {
+  loggedInUser: IUser | null
+  message: string
+  loading: boolean
+}
+
 export type AppState = {
   product: ProductState
+  user: UserState
 }
